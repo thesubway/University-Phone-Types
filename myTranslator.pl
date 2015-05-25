@@ -6,9 +6,11 @@ if (FILE) {
 else {
 	print("file does not exist\n");
 }
-print("test");
-
-while (<>) {
-print "This is output file: \n\n";
-	print ();
+$output = "output.txt";
+while (<FILE>) {
+  print $_;
 }
+# while (<>) {
+# print "This is output file: \n\n";
+# 	print ();
+# }
