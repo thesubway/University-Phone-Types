@@ -1,6 +1,7 @@
 #open(my $FileHandle, "<", "tablets.csv") or die "Not able to open file";
 sub removeFrontWhiteSpace {
 }
+$title = "University Student's Tablet-Types";
 open FILE, "tablets.csv" or die $!;
 open FILE2, ">tablets_W1023475.html" or die $!;
 sub leftTrim {
@@ -11,6 +12,8 @@ sub leftTrim {
 # $test1 = " Hello.";
 # $test1 = leftTrim($test1);
 # print "test".$test1;
+use CGI;
+$cgi = new CGI;
 $output = "output.txt";
 $android = 0;
 $windows = 0;
@@ -34,8 +37,22 @@ while (<FILE>) {
   	}
   }
 }
+print FILE2 "<!DOCTYPE html>
+	<head>
+		<title>Tablet Usage</title>
+        <meta charset=\"utf-8\" />
+	</head>
+<body>
+	<h1>".$title."</h1>
+	<svg height=\"100%\" width=\"100%\" xmlns=http://www.w3.org/2000/svg version=\"1.1\">";
+print FILE2 "<div>";
 print FILE2 "Total iOS: ".$ios."\n";
 print FILE2 "Total android: ".$android."\n";
-print FILE2 "Total windows: ".$windows;
+print FILE2 "Total windows: ".$windows."\n";
+print FILE2 "</div>";
+print FILE2 "	</svg>
+</body>
+</html>";
+
 close(FILE);
 close FILE2;
