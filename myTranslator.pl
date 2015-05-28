@@ -37,22 +37,46 @@ while (<FILE>) {
   	}
   }
 }
-print FILE2 "<!DOCTYPE html>
+print FILE2 '<!DOCTYPE html>
 	<head>
 		<title>Tablet Usage</title>
-        <meta charset=\"utf-8\" />
+        <meta charset="utf-8" />
+        <style>'."
+        	#circleiOS{
+        		width:".$ios."px;
+				height:".$ios."px;
+				border-radius:".($ios / 2)."px;
+				background-color:red;
+        	}
+        	#circleWindows{
+        		width:".$windows."px;
+				height:".$windows."px;
+				border-radius:".($windows / 2)."px;
+				background-color:red;
+        	}
+        	#circleAndroid{
+        		width:".$android."px;
+				height:".$android."px;
+				border-radius:".($android / 2)."px;
+				background-color:red;
+        	}
+        ".'</style>
 	</head>
 <body>
-	<h1>".$title."</h1>
-	<svg height=\"100%\" width=\"100%\" xmlns=http://www.w3.org/2000/svg version=\"1.1\">";
-print FILE2 "<div>";
-print FILE2 "Total iOS: ".$ios."\n";
-print FILE2 "Total android: ".$android."\n";
-print FILE2 "Total windows: ".$windows."\n";
-print FILE2 "</div>";
-print FILE2 "	</svg>
+	<h1>'.$title.'</h1>
+	<svg height="100%" width="100%" xmlns=http://www.w3.org/2000/svg version="1.1">';
+print FILE2 "\n".'<div>'."\n";
+print FILE2 '	<div id="circleAndroid">android
+	</div>
+	<div id="circleiOS">iOS
+	</div>
+	<div id="circleWindows">windows
+	</div>
+';
+print FILE2 '</div>';
+print FILE2 '	</svg>
 </body>
-</html>";
+</html>';
 
 close(FILE);
 close FILE2;
